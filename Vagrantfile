@@ -11,14 +11,26 @@ Vagrant.configure("2") do |config|
     v.cpus = 2
   end
   
-  port1 = 9200
+  port1 = 80
 
   config.vm.network(:forwarded_port, guest: port1, host: port1)
 
   config.vm.provision "shell",
     path: "scripts/bootstrap.sh"
-	
+
   config.vm.provision "shell",
     path: "scripts/startup.sh",
-	run: "always"
+  run: "always"
+
+  config.vm.provision "shell",
+    path: "scripts/elasticsearch.sh"
+
+  config.vm.provision "shell",
+    path: "scripts/kibana.sh"
+
+  config.vm.provision "shell",
+    path: "scripts/nginx.sh"
+
+  config.vm.provision "shell",
+    path: "scripts/logstash.sh"
 end
