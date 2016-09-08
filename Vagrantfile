@@ -7,13 +7,13 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "elk.vagrant-local.jbj"
   
   config.vm.provider "virtualbox" do |v|
-    v.memory = 4098
-    v.cpus = 2
+    v.memory = 2048
+    v.cpus = 1
   end
   
-  port1 = 80
+  #port1 = 80
 
-  config.vm.network(:forwarded_port, guest: port1, host: port1)
+  #config.vm.network(:forwarded_port, guest: port1, host: port1)
 
   config.vm.provision "shell",
     path: "scripts/bootstrap.sh"
