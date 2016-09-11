@@ -7,8 +7,9 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "elk.vagrant-local.jbj"
   
   config.vm.provider "virtualbox" do |v|
-    v.memory = 4098
-    v.cpus = 2
+    v.memory = 2048
+    v.cpus = 1
+    v.name = "elk"
   end
 
   # port1 = 80
