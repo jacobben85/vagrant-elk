@@ -5,6 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/trusty64"
   config.vm.network "private_network", ip: "192.168.56.104"
   config.vm.hostname = "elk.vagrant-local.jbj"
+  config.vm.box_check_update = false
   
   config.vm.provider "virtualbox" do |v|
     v.memory = 2048
@@ -12,9 +13,9 @@ Vagrant.configure("2") do |config|
     v.name = "elk"
   end
 
-  # port1 = 80
-  #
-  # config.vm.network(:forwarded_port, guest: port1, host: port1)
+   port1 = 5044
+  
+   config.vm.network(:forwarded_port, guest: port1, host: port1)
 
   config.vm.provision "shell",
     path: "scripts/bootstrap.sh"
